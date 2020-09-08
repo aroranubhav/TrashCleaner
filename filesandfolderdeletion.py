@@ -2,8 +2,8 @@ import os
 import shutil
 import schedule
 
-# path to the directory
-path = '/Users/anubhava/.Trash/'
+# path to the directory to be deleted
+path = '/Users/anubhav/.Trash/'
 
 
 def empty_trash():
