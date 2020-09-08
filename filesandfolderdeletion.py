@@ -16,9 +16,10 @@ def empty_trash():
                 shutil.rmtree(filepath)
         except Exception as exception:
             print('Failed to delete at %s. Reason: %s' % (filepath, exception))
-
-
-schedule.every().sunday.do(empty_trash())
+            
+            
+# you can schdule it according to your need, I am setting it to once a week on sunday's
+schedule.every().sunday.at("00:00").do(empty_trash())
 
 while True:
     schedule.run_pending()
