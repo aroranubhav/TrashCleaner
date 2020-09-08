@@ -1,0 +1,24 @@
+import os
+import shutil
+import schedule
+
+# path to the directory
+path = '/Users/anubhava/.Trash/'
+
+
+def empty_trash():
+    for filename in os.listdir(path):
+        filepath = os.path.join(path, filename)
+        try:
+            if os.path.isfile(filepath) or os.path.islink(filepath):
+                os.unlink(filepath)
+            elif os.path.isdir(filepath):
+                shutil.rmtree(filepath)
+        except Exception as exception:
+            print('Failed to delete at %s. Reason: %s' % (filepath, exception))
+
+
+schedule.every().sunday.do(empty_trash())
+
+while True:
+    schedule.run_pending()
